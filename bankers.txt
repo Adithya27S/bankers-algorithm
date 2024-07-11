@@ -1,0 +1,70 @@
+#include<stdio.h>
+#include<stdbool.h>
+void main(){
+    int c=0,b=0,cp,f,i,j,m,n,k=0,alloc[10][10],max[10][10],need[10][10],work[10][10],ss[10],avail[10][10],d=0;
+    printf("process and resources:");
+    scanf("%d %d",&n,&m);
+    printf("alloc:\n");
+    for(i=0;i<n;i++){
+        for(j=0;j<m;j++){
+            printf("enter:");
+            scanf("%d",&alloc[i][j]);
+        }
+    }
+    printf("avail:");
+    for(j=0;j<m;j++){
+    scanf("%d",&avail[i][j]);
+    work[1][j]=avail[i][j];
+}
+     printf("max:\n");
+    for(i=0;i<n;i++){
+        for(j=0;j<m;j++){
+            printf("enter:");
+            scanf("%d",&max[i][j]);
+        }
+    }
+         printf("need:\n");
+    for(i=0;i<n;i++){
+        for(j=0;j<m;j++){
+            need[i][j]=max[i][j]-alloc[i][j];
+            printf("%d\t",need[i][j]);
+        }printf("\n");
+    }
+    bool flag[10];
+    for(i=0;i<n;i++){
+        flag[i]=false;
+    }
+    while(c<n){
+        cp=-1;
+        for(i=b;i<n;i++){
+            if(flag[i]==false ){
+                f=0;
+                for(j=0;j<m;j++){
+                     
+                if(need[i][j]<=work[1][j]){
+                }
+                    else{f++;}
+                }
+                if(f==0){
+                cp=i;
+                c++;
+                ss[k]=cp;
+                flag[cp]=true;
+                k++;break;
+                }
+            }
+        }
+        if(cp==-1){
+            printf("deadlock;");d=1;
+            break;
+        }
+        else{
+            for(j=0;j<m;j++){
+            work[1][j]+=alloc[cp][j];}
+        }
+        if(b==n){b==0;}
+    }
+    
+    if(d!=1){ printf("\nss:\t");
+    for(i=0;i<k;i++){printf("%d\t",ss[i]);}}
+}
